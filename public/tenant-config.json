@@ -1,0 +1,14 @@
+{
+  "id": "brand_1794892093806",
+  "brandId": "brand_1794892093806",
+  "slug": "auto-house",
+  "name": "أوتو هاوس لقطع غيار السيارات",
+  "slogan": "قطع غيار أصلية بضمان معتمد وأسرع توصيل",
+  "logoUrl": "https://i.ibb.co/3yL3ZXm5/aa2f6315c6fc.jpg",
+  "phone": "01013373634",
+  "whatsapp": "01013373634",
+  "primaryColor": "#00f0ff",
+  "accentColor": "#0f172a",
+  "appTemplate": "products_erp",
+  "ezZelApiBase": "https://ez-zel.onrender.com"
+}

@@ -60,7 +60,7 @@ const AccessDenied: React.FC<AccessDeniedProps> = ({ reason, details, onRetry, o
                 </div>
                 
                 <div className="bg-gray-50 dark:bg-gray-700/50 p-4 text-center text-xs text-gray-400 dark:text-gray-500">
-                    &copy; {new Date().getFullYear()} بطاح الأصلي. جميع الحقوق محفوظة.
+                    &copy; {new Date().getFullYear()} أوتو هاوس لقطع غيار السيارات. جميع الحقوق محفوظة.
                 </div>
             </div>
         </div>

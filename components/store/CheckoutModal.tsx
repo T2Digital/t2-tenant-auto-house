@@ -143,7 +143,7 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, cartItem
             localStorage.removeItem('checkoutData');
 
             const businessPhoneNumber = '201080444447'; 
-            let message = `*طلب جديد من متجر بطاح الأصلي*\n\n`;
+            let message = `*طلب جديد من متجر أوتو هاوس لقطع غيار السيارات*\n\n`;
             message += `*الاسم:* ${customerDetails.name}\n`;
             message += `*الهاتف:* ${customerDetails.phone}\n`;
             message += `*العنوان:* ${customerDetails.address}\n\n`;

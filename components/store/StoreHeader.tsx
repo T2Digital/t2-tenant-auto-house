@@ -11,7 +11,7 @@ interface StoreHeaderProps {
 
 const StoreHeader: React.FC<StoreHeaderProps> = ({ onCartClick, cartItemCount, setViewMode, onMyOrdersClick }) => {
     const settings = useStore(state => state.appData?.settings);
-    const brandName = settings?.companyName || 'متجر بطاح الأصلي';
+    const brandName = settings?.companyName || 'متجر أوتو هاوس لقطع غيار السيارات';
     const brandTagline = settings?.tickerMessages?.[0] || 'المتجر الإلكتروني المعتمد';
 
     const [isDarkMode, setIsDarkMode] = useState(false);
@@ -56,7 +56,7 @@ const StoreHeader: React.FC<StoreHeaderProps> = ({ onCartClick, cartItemCount, s
                 {/* Logo Area */}
                 <div className="flex items-center gap-3 cursor-pointer group" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
                     <div className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gray-50 dark:bg-gray-800 flex items-center justify-center overflow-hidden border border-gray-100 dark:border-gray-700 group-hover:border-primary/30 transition-colors">
-                        <img src="https://i.ibb.co/LDdGwd87/5-1.png" alt="Logo" className="w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-300" />
+                        <img src="https://i.ibb.co/3yL3ZXm5/aa2f6315c6fc.jpg" alt="Logo" className="w-8 h-8 sm:w-10 sm:h-10 object-contain group-hover:scale-110 transition-transform duration-300" />
                     </div>
                     <div className="hidden sm:flex flex-col">
                         <h1 className="text-xl font-black text-gray-900 dark:text-white leading-none tracking-tight">{brandName}</h1>

@@ -19,9 +19,9 @@ export default defineConfig(({ mode }) => {
                 registerType: 'autoUpdate',
                 includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
                 manifest: {
-                    name: 'بطاح الأصلي - قطع غيار السيارات',
-                    short_name: 'بطاح الأصلي',
-                    description: 'متجر بطاح الأصلي لقطع غيار السيارات وإكسسواراتها',
+                    name: 'أوتو هاوس لقطع غيار السيارات - قطع غيار السيارات',
+                    short_name: 'أوتو هاوس لقطع غيار السيارات',
+                    description: 'متجر أوتو هاوس لقطع غيار السيارات لقطع غيار السيارات وإكسسواراتها',
                     theme_color: '#ffffff',
                     background_color: '#ffffff',
                     display: 'standalone',

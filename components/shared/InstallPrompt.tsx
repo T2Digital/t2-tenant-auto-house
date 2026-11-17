@@ -42,7 +42,7 @@ const InstallPrompt: React.FC = () => {
             <div className="flex items-start justify-between">
                 <div className="flex items-center gap-4">
                     <div className="relative">
-                        <img src="https://i.ibb.co/LDdGwd87/5-1.png" alt="App Icon" className="w-14 h-14 rounded-xl shadow-md border border-gray-100 dark:border-gray-700 object-cover" />
+                        <img src="https://i.ibb.co/3yL3ZXm5/aa2f6315c6fc.jpg" alt="App Icon" className="w-14 h-14 rounded-xl shadow-md border border-gray-100 dark:border-gray-700 object-cover" />
                         <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 border-2 border-white dark:border-gray-800 rounded-full flex items-center justify-center">
                             <i className="fas fa-check text-white text-[10px]"></i>
                         </div>

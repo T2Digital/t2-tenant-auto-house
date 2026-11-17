@@ -13,10 +13,10 @@ const StoreFooter: React.FC<StoreFooterProps> = ({ setViewMode }) => {
                     <div className="col-span-1 md:col-span-2">
                         <div className="flex items-center gap-3 mb-6">
                             <div className="w-12 h-12 rounded-xl bg-gray-50 dark:bg-gray-800 flex items-center justify-center overflow-hidden border border-gray-100 dark:border-gray-700">
-                                <img src="https://i.ibb.co/LDdGwd87/5-1.png" alt="Logo" className="w-10 h-10 object-contain" />
+                                <img src="https://i.ibb.co/3yL3ZXm5/aa2f6315c6fc.jpg" alt="Logo" className="w-10 h-10 object-contain" />
                             </div>
                             <div>
-                                <h3 className="text-xl font-black text-gray-900 dark:text-white leading-none tracking-tight">متجر بطاح الأصلي</h3>
+                                <h3 className="text-xl font-black text-gray-900 dark:text-white leading-none tracking-tight">متجر أوتو هاوس لقطع غيار السيارات</h3>
                                 <span className="text-[10px] text-primary font-bold tracking-widest uppercase mt-1 block">لقطع الغيار الأصلية</span>
                             </div>
                         </div>
@@ -81,7 +81,7 @@ const StoreFooter: React.FC<StoreFooterProps> = ({ setViewMode }) => {
                             </li>
                             <li className="flex items-center gap-3 text-gray-600 dark:text-gray-400">
                                 <i className="fas fa-envelope text-primary"></i>
-                                <span>info@battah.com</span>
+                                <span>info@autohouse-eg.com</span>
                             </li>
                         </ul>
                     </div>
@@ -90,7 +90,7 @@ const StoreFooter: React.FC<StoreFooterProps> = ({ setViewMode }) => {
                 {/* Copyright */}
                 <div className="pt-8 border-t border-gray-100 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4">
                     <p className="text-gray-500 dark:text-gray-400 text-sm text-center md:text-right">
-                        &copy; {new Date().getFullYear()} متجر بطاح لقطع الغيار. جميع الحقوق محفوظة.
+                        &copy; {new Date().getFullYear()} متجر أوتو هاوس لقطع الغيار. جميع الحقوق محفوظة.
                     </p>
                     <div className="flex gap-3 items-center">
                         <div className="flex items-center justify-center h-8 bg-[#E60000] rounded-md text-white font-bold text-xs px-3 hover:bg-red-700 transition-colors cursor-pointer shadow-sm">

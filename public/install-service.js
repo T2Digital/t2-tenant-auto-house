@@ -8,7 +8,7 @@ const path = require('path');
 // إنشاء كائن الخدمة
 const svc = new Service({
   name: 'Battah Biometric Bridge',
-  description: 'خدمة الربط التلقائي بين جهاز البصمة ونظام بطاح السحابي.',
+  description: 'خدمة الربط التلقائي بين جهاز البصمة ونظام أوتو هاوس السحابي.',
   script: path.join(__dirname, 'bridge-agent.js'),
   env: [{
       name: "NODE_ENV",

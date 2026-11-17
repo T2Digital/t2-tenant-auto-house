@@ -81,7 +81,7 @@ const AIChatbot: React.FC<AIChatbotProps> = ({ setSelectedProduct, addToCart, op
                 }
             ];
 
-            const systemInstruction = `أنت "مساعد بطاح الذكي"، شخصيتك هي مهندس صيانة سيارات مخضرم وموظف مبيعات محترف في متجر "بطاح" لقطع غيار السيارات.
+            const systemInstruction = `أنت "مساعد أوتو هاوس الذكي"، شخصيتك هي مهندس صيانة سيارات مخضرم وموظف مبيعات محترف في متجر "أوتو هاوس" لقطع غيار السيارات.
 لديك خبرة واسعة في تشخيص أعطال السيارات وتقديم النصائح الفنية الدقيقة.
 أسلوبك في الكلام: ودود، شعبي مصري (يا ريس، يا هندسة، يا باشا)، واثق، ومساعد جداً.
 
@@ -198,7 +198,7 @@ const AIChatbot: React.FC<AIChatbotProps> = ({ setSelectedProduct, addToCart, op
                                 <i className="fas fa-user-astronaut text-xl"></i>
                             </div>
                             <div>
-                                <h3 className="font-bold text-sm">مساعد بطاح الذكي</h3>
+                                <h3 className="font-bold text-sm">مساعد أوتو هاوس الذكي</h3>
                                 <p className="text-xs text-blue-100 flex items-center gap-1">
                                     <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
                                     متصل الآن
@@ -216,7 +216,7 @@ const AIChatbot: React.FC<AIChatbotProps> = ({ setSelectedProduct, addToCart, op
                             <div className="text-center text-gray-500 text-sm mt-10">
                                 <i className="fas fa-robot text-5xl mb-4 text-gray-300 dark:text-gray-600"></i>
                                 <p className="font-bold text-gray-700 dark:text-gray-300 mb-2">أهلاً يا باشا! 👋</p>
-                                <p className="leading-relaxed mb-4">أنا "مساعد بطاح"، معاك لو محتاج أي قطعة غيار أو عندك مشكلة في عربيتك.</p>
+                                <p className="leading-relaxed mb-4">أنا "مساعد أوتو هاوس"، معاك لو محتاج أي قطعة غيار أو عندك مشكلة في عربيتك.</p>
                                 <div className="flex flex-wrap justify-center gap-2">
                                     <button onClick={() => handleQuickReply('العربية بتسخن')} className="px-3 py-1.5 bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300 rounded-full text-xs hover:bg-blue-200 transition-colors border border-blue-200 dark:border-blue-800">العربية بتسخن</button>
                                     <button onClick={() => handleQuickReply('صوت تصفير في الفرامل')} className="px-3 py-1.5 bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300 rounded-full text-xs hover:bg-blue-200 transition-colors border border-blue-200 dark:border-blue-800">تصفير في الفرامل</button>
