@@ -139,7 +139,30 @@ const App: React.FC = () => {
 
     useEffect(() => {
         bootstrapBattahTenant().then((b) => {
-            if (b) setTenantBrand(b);
+            if (b) {
+                setTenantBrand(b);
+                const catalog = Array.isArray(b.productsCatalog) ? b.productsCatalog : [];
+                const currentProducts = useStore.getState().appData?.products || [];
+                if (catalog.length > 0 && currentProducts.length === 0) {
+                    const hydrated = catalog.map((item: any, idx: number) => {
+                        const price = Number(item.numericPrice || String(item.price || '').replace(/[^\d.]/g, '')) || 500;
+                        return {
+                            id: idx + 1,
+                            name: item.name || `منتج ${idx + 1}`,
+                            sku: item.sku || `AH-${idx + 101}`,
+                            category: item.category || 'قطع غيار',
+                            description: item.description || '',
+                            purchasePrice: Math.round(price * 0.7),
+                            sellingPrice: price,
+                            stock: { main: 25, branch1: 10, branch2: 10, branch3: 10 },
+                            imageUrl: item.imageUrl || b.logoUrl || ''
+                        };
+                    });
+                    useStore.setState((state) => ({
+                        appData: { ...(state.appData as any), products: hydrated }
+                    }));
+                }
+            }
         });
     }, []);
     
