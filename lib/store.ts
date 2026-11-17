@@ -1,6 +1,7 @@
 /// <reference types="vite/client" />
 import { create } from 'zustand';
 import { tenantCollection as collection, tenantDoc as doc, resolveTenantBrandId } from './tenantBootstrap';
+import { fetchTenantErpState, queueTenantErpSync, getTenantSessionToken } from './tenantErpSync';
 import { initializeApp } from 'firebase/app';
 import {
     signInWithEmailAndPassword,
@@ -215,6 +216,25 @@ const useStore = create<AppState & AppActions>((set, get) => ({
         try {
             publicUnsubscribers.forEach(unsub => unsub());
             publicUnsubscribers = [];
+
+            const activeSlug = resolveTenantBrandId();
+            if (activeSlug) {
+                fetchTenantErpState(activeSlug, getTenantSessionToken(activeSlug)).then((cloudState) => {
+                    if (cloudState && typeof cloudState === 'object') {
+                        isHydratingFromCloud = true;
+                        set(state => ({
+                            appData: {
+                                ...(state.appData as AppData),
+                                ...(Array.isArray(cloudState.products) && cloudState.products.length > 0 ? { products: cloudState.products } : {}),
+                                ...(Array.isArray(cloudState.broadcasts) && cloudState.broadcasts.length > 0 ? { broadcasts: cloudState.broadcasts } : {}),
+                                ...(cloudState.settings ? { settings: cloudState.settings } : {}),
+                                ...(getTenantSessionToken(activeSlug) ? cloudState : {})
+                            }
+                        }));
+                        isHydratingFromCloud = false;
+                    }
+                }).catch(() => {});
+            }
         
             const publicCollections: (keyof AppData)[] = ['broadcasts', 'products'];
 
@@ -467,6 +487,12 @@ const useStore = create<AppState & AppActions>((set, get) => ({
                 localStorage.setItem(`t2_tenant_session_${brandSlug}`, JSON.stringify({ token: data.token, user: data.user }));
             } catch {}
             set({ currentUser: data.user as any });
+            const cloudState = await fetchTenantErpState(brandSlug, data.token);
+            if (cloudState && typeof cloudState === 'object') {
+                isHydratingFromCloud = true;
+                set(state => ({ appData: { ...(state.appData as AppData), ...cloudState } }));
+                isHydratingFromCloud = false;
+            }
             return;
         }
         await signInWithEmailAndPassword(auth, email, pass);
@@ -1972,5 +1998,15 @@ const useStore = create<AppState & AppActions>((set, get) => ({
         }
     },
 }));
+
+let isHydratingFromCloud = false;
+useStore.subscribe((state, prevState) => {
+    if (isHydratingFromCloud) return;
+    const slug = resolveTenantBrandId();
+    if (!slug || !state.currentUser || !getTenantSessionToken(slug)) return;
+    if (state.appData !== prevState.appData && state.appData) {
+        queueTenantErpSync(slug, state.appData as any);
+    }
+});
 
 export default useStore;
