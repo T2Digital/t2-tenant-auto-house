@@ -64,7 +64,9 @@ const Storefront: React.FC<StorefrontProps> = ({ setViewMode }) => {
         loadFeatured();
     }, [storefrontSettings]);
 
-    // Fetch products based on filters
+    const storeProducts = useStore(state => state.appData?.products || []);
+
+    // Fetch products based on filters or live storeProducts updates
     useEffect(() => {
         const load = async () => {
             setLoading(true);
@@ -86,7 +88,7 @@ const Storefront: React.FC<StorefrontProps> = ({ setViewMode }) => {
         // Debounce search
         const timer = setTimeout(load, filters.search ? 500 : 0);
         return () => clearTimeout(timer);
-    }, [filters.category, filters.search]);
+    }, [filters.category, filters.search, storeProducts]);
 
     // Handle Smart Scanning from Hash or pendingScan
     const globalLoading = useStore(state => state.isLoading);
