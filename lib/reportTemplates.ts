@@ -218,12 +218,15 @@ export const generateInvoiceContent = (
         </tr>
     `}).join('');
 
+    const liveSf: any = (typeof window !== 'undefined' && (window as any).__TENANT_STOREFRONT_SETTINGS__) || {};
+    const liveBrand: any = (typeof window !== 'undefined' && (window as any).__TENANT_BRAND__) || {};
     const bName = branchNames[sale.branchSoldFrom] || sale.branchSoldFrom;
-    const bAddress = branchAddresses[sale.branchSoldFrom] || branchAddresses.main;
+    const bAddress = liveSf?.address || liveBrand?.address || branchAddresses[sale.branchSoldFrom] || branchAddresses.main;
+    const bPhone = liveSf?.contactPhone || liveBrand?.phone || '01013373634';
 
     const branchAddressHtml = `
         <p style="margin: 0; font-size: 10px;">${bAddress}</p>
-        <p style="margin: 0; font-size: 10px;">تليفون: 01080444447</p>
+        <p style="margin: 0; font-size: 10px;">تليفون: ${bPhone}</p>
     `;
 
     const itemsTotal = items.reduce((sum, item) => {

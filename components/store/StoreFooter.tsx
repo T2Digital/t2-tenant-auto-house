@@ -1,10 +1,17 @@
 import React from 'react';
+import useStore from '../../lib/store';
 
 interface StoreFooterProps {
     setViewMode: (mode: 'admin' | 'store') => void;
 }
 
 const StoreFooter: React.FC<StoreFooterProps> = ({ setViewMode }) => {
+    const storefrontSettings: any = useStore(state => (state.appData as any)?.storefrontSettings || {});
+    const tenantBrand: any = (typeof window !== 'undefined' && (window as any).__TENANT_BRAND__) || {};
+    const displayAddress = storefrontSettings?.address || tenantBrand?.address || 'القاهرة - جمهورية مصر العربية';
+    const displayPhone = storefrontSettings?.contactPhone || tenantBrand?.phone || '01013373634';
+    const displayName = storefrontSettings?.companyName || tenantBrand?.name || 'متجر أوتو هاوس لقطع غيار السيارات';
+    const displayLogo = tenantBrand?.logoUrl || 'https://i.ibb.co/3yL3ZXm5/aa2f6315c6fc.jpg';
     return (
         <footer className="bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 pt-16 pb-8 mt-16">
             <div className="container mx-auto px-4 sm:px-6">
@@ -69,15 +76,12 @@ const StoreFooter: React.FC<StoreFooterProps> = ({ setViewMode }) => {
                             <li className="flex items-start gap-3 text-gray-600 dark:text-gray-400">
                                 <i className="fas fa-map-marker-alt mt-1 text-primary"></i>
                                 <div className="space-y-2 text-sm">
-                                    <p>79 شارع رمسيس ناصية التوفيقية امام سنترال رمسيس</p>
-                                    <p>19 شارع رمسيس ناصية التوفيقية امام سنترال رمسيس</p>
-                                    <p>6 شارع البورصة ناصية التوفيقية بجوار سينما ريفولى</p>
-                                    <p>1 شارع البورصة ناصية التوفيقية امام دار القضاء العالى</p>
+                                    <p>{displayAddress}</p>
                                 </div>
                             </li>
                             <li className="flex items-center gap-3 text-gray-600 dark:text-gray-400">
                                 <i className="fas fa-phone-alt text-primary"></i>
-                                <span dir="ltr">+20 108 044 4447</span>
+                                <span dir="ltr">{displayPhone}</span>
                             </li>
                             <li className="flex items-center gap-3 text-gray-600 dark:text-gray-400">
                                 <i className="fas fa-envelope text-primary"></i>
