@@ -25,7 +25,7 @@ export const db = initializeFirestore(app, {
   localCache: persistentLocalCache({
     tabManager: persistentMultipleTabManager()
   })
-});
+}, appletConfig.firestoreDatabaseId || undefined);
 
 // Connection test for diagnosing deployment issues
 import { doc, getDocFromCache, getDocFromServer } from "firebase/firestore";
