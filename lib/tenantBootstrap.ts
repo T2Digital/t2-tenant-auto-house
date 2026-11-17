@@ -145,27 +145,32 @@ export async function bootstrapBattahTenant(): Promise<TenantBrandConfig | null>
     }
   } catch {}
 
-  if (!brand) {
-    try {
-      const cfgRes = await fetch('/tenant-config.json');
-      if (cfgRes.ok) {
-        const cfg = await cfgRes.json();
-        if (cfg?.name) {
-          brand = {
-            id: cfg.brandId || cfg.id || brandId,
-            slug: cfg.slug || brandId,
-            name: cfg.name,
-            slogan: cfg.slogan || '',
-            logoUrl: cfg.logoUrl || '',
-            phone: cfg.phone || '',
-            whatsapp: cfg.whatsapp || cfg.phone || '',
-            primaryColor: cfg.primaryColor || '#00f0ff',
-            accentColor: cfg.accentColor || '#0f172a',
-          };
+  try {
+    const cfgRes = await fetch('/tenant-config.json');
+    if (cfgRes.ok) {
+      const cfg = await cfgRes.json();
+      if (!brand && cfg?.name) {
+        brand = {
+          id: cfg.brandId || cfg.id || brandId,
+          slug: cfg.slug || brandId,
+          name: cfg.name,
+          slogan: cfg.slogan || '',
+          logoUrl: cfg.logoUrl || '',
+          phone: cfg.phone || '',
+          whatsapp: cfg.whatsapp || cfg.phone || '',
+          adminEmail: cfg.adminEmail || '',
+          productsCatalog: Array.isArray(cfg.productsCatalog) ? cfg.productsCatalog : [],
+          primaryColor: cfg.primaryColor || '#00f0ff',
+          accentColor: cfg.accentColor || '#0f172a',
+        };
+      } else if (brand && cfg) {
+        if (!brand.adminEmail && cfg.adminEmail) brand.adminEmail = cfg.adminEmail;
+        if ((!Array.isArray(brand.productsCatalog) || brand.productsCatalog.length === 0) && Array.isArray(cfg.productsCatalog)) {
+          brand.productsCatalog = cfg.productsCatalog;
         }
       }
-    } catch {}
-  }
+    }
+  } catch {}
 
   if (!brand) return null;
 

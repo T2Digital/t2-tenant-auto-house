@@ -242,11 +242,34 @@ const App: React.FC = () => {
 
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
             if (user && user.email) {
-                // Fetch the user profile from DB and set it in the store.
-                // The next effect will trigger based on this change.
                 await setCurrentUserByEmail(user.email);
             } else {
-                // If user is null, clear everything.
+                const brandSlug = (() => {
+                    try {
+                        const t = (window as any).__TENANT_BRAND__;
+                        return t?.slug || new URLSearchParams(window.location.search).get('brandId') || (import.meta as any).env?.VITE_TENANT_BRAND_ID || 'auto-house';
+                    } catch { return 'auto-house'; }
+                })();
+                try {
+                    const rawSession = localStorage.getItem(`t2_tenant_session_${brandSlug}`);
+                    if (rawSession) {
+                        const parsed = JSON.parse(rawSession);
+                        if (parsed?.token && parsed?.user) {
+                            useStore.getState().setCurrentUser(parsed.user);
+                            const baseUrl = ((import.meta as any).env?.VITE_EZZEL_API_URL || 'https://ez-zel.onrender.com').replace(/\/$/, '');
+                            fetch(`${baseUrl}/api/tenant-auth/verify?brandSlug=${encodeURIComponent(brandSlug)}`, {
+                                headers: { Authorization: `Bearer ${parsed.token}` }
+                            }).then(r => {
+                                if (!r.ok) {
+                                    localStorage.removeItem(`t2_tenant_session_${brandSlug}`);
+                                    clearCurrentUser();
+                                    clearAdminListeners();
+                                }
+                            }).catch(() => {});
+                            return;
+                        }
+                    }
+                } catch {}
                 clearCurrentUser();
                 clearAdminListeners();
             }
