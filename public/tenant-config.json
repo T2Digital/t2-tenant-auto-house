@@ -19,6 +19,8 @@
       "sku": "AH-BRK-101",
       "category": "قطع غيار",
       "numericPrice": 1850,
+      "imageUrl": "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=800&q=80",
+      "images": ["https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=800&q=80"],
       "description": "تيل فرامل أمامي سيراميك عالي الأداء بدون صوت أو غبار، مناسب لمعظم السيارات الحديثة بضمان أوتو هاوس."
     },
     {
@@ -26,6 +28,8 @@
       "sku": "AH-FLT-102",
       "category": "قطع غيار",
       "numericPrice": 320,
+      "imageUrl": "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=800&q=80",
+      "images": ["https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=800&q=80"],
       "description": "فلتر زيت Bosch ألماني لتنقية فائقة وحماية المحرك وإطالة عمر الزيت."
     },
     {
@@ -33,6 +37,8 @@
       "sku": "AH-OIL-103",
       "category": "زيوت وشحومات",
       "numericPrice": 2150,
+      "imageUrl": "https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=800&q=80",
+      "images": ["https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=800&q=80"],
       "description": "زيت موبيل 1 تخليقي بالكامل لأقصى حماية ضد التآكل والحرارة العالية."
     },
     {
@@ -40,6 +46,8 @@
       "sku": "AH-BAT-104",
       "category": "بطاريات",
       "numericPrice": 4400,
+      "imageUrl": "https://images.unsplash.com/photo-1600706432502-77a0e2e32790?auto=format&fit=crop&w=800&q=80",
+      "images": ["https://images.unsplash.com/photo-1600706432502-77a0e2e32790?auto=format&fit=crop&w=800&q=80"],
       "description": "بطارية فارتا 70 أمبير بضمان استبدال معتمد 12 شهراً وأداء تشغيل فوري."
     },
     {
@@ -47,6 +55,8 @@
       "sku": "AH-SPK-105",
       "category": "قطع غيار",
       "numericPrice": 1450,
+      "imageUrl": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=800&q=80",
+      "images": ["https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=800&q=80"],
       "description": "بوجيهات إيريديوم لتحسين الاحتراق وتقليل استهلاك البنزين وزيادة عزم السيارة."
     },
     {
@@ -54,6 +64,8 @@
       "sku": "AH-SUS-106",
       "category": "ميكانيكا",
       "numericPrice": 3600,
+      "imageUrl": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80",
+      "images": ["https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80"],
       "description": "مساعدين غاز ياباني KYB لثبات فائق على الطرق السريعة وراحة في المطبات."
     }
   ]
