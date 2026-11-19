@@ -13,6 +13,45 @@
   "accentColor": "#0f172a",
   "appTemplate": "products_erp",
   "ezZelApiBase": "https://ez-zel.onrender.com",
+  "appCustomization": {
+    "activeBranches": [
+      { "key": "main", "label": "الفرع الرئيسي" }
+    ],
+    "cashiers": [
+      { "value": "main", "label": "الكاشير الرئيسي" }
+    ],
+    "mainCategories": [
+      "قطع غيار",
+      "كماليات و إكسسوارات",
+      "زيوت وشحومات",
+      "بطاريات",
+      "إطارات",
+      "ميكانيكا"
+    ],
+    "subCategories": {
+      "قطع غيار": ["فلاتر", "سيور", "بوجيهات", "تيل فرامل", "مساعدين", "بطاحات"],
+      "كماليات و إكسسوارات": ["دواسات", "معطرات", "إكسسوارات"],
+      "زيوت وشحومات": ["زيت محرك", "زيت فتيس", "شحم"],
+      "بطاريات": ["بطاريات جافة", "بطاريات سائلة"],
+      "إطارات": ["إطارات ملاكي", "إطارات صيفي"],
+      "ميكانيكا": ["عفشة ومساعدين", "نظام فرامل", "أجزاء محرك"]
+    },
+    "storefrontFilters": {
+      "showSearch": true,
+      "showCategoryFilter": true,
+      "showSubCategoryFilter": true,
+      "showBrandFilter": true,
+      "brandFilterLabel": "ماركة السيارة",
+      "brandFilterOptions": [
+        "Toyota", "Hyundai", "Kia", "Chevrolet", "Nissan", "Renault", "Peugeot",
+        "Fiat", "Suzuki", "Mitsubishi", "Honda", "Skoda", "Volkswagen", "Opel",
+        "BMW", "Mercedes-Benz", "Chery", "MG", "Lada", "BYD", "Jeep", "Ford",
+        "Mazda", "Seat", "Geely", "Daewoo", "Speranza", "Audi", "Subaru", "Volvo"
+      ],
+      "showPriceFilter": false,
+      "showInStockOnlyFilter": false
+    }
+  },
   "productsCatalog": [
     {
       "name": "تيل فرامل أمامي سيراميك Brembo أصلي",

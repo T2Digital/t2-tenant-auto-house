@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import useStore from '../lib/store';
 import { resolveTenantBrandId } from '../lib/tenantBootstrap';
 import { changeTenantAdminPassword } from '../lib/tenantErpSync';
+import { getActiveBranches, getBranchLabelMap } from '../lib/appConfig';
 import { Branch } from '../types';
 import NotificationsDropdown from './shared/NotificationsDropdown';
 import GlobalSearch from './shared/GlobalSearch';
@@ -14,7 +15,12 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ toggleSidebar, setViewMode }) => {
-    const { currentUser, switchActiveBranch, logout } = useStore();
+    const { currentUser, switchActiveBranch, logout, appCustomization } = useStore(state => ({
+        currentUser: state.currentUser,
+        switchActiveBranch: state.switchActiveBranch,
+        logout: state.logout,
+        appCustomization: state.appData?.appCustomization,
+    }));
     const [isSearchOpen, setSearchOpen] = useState(false);
     const [isDarkMode, setIsDarkMode] = useState(false);
     const [isPassModalOpen, setIsPassModalOpen] = useState(false);
@@ -69,14 +75,14 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar, setViewMode }) => {
 
     if (!currentUser) return null;
 
-    const branchLabels: Record<Branch, string> = {
-        'main': 'المخزن',
-        'branch1': 'الرئيسي',
-        'branch2': 'فرع 1',
-        'branch3': 'فرع 2'
-    };
-
-    const hasMultipleBranches = currentUser.allowedBranches && currentUser.allowedBranches.length > 1;
+    const activeBranches = getActiveBranches(appCustomization);
+    const branchLabels = getBranchLabelMap(activeBranches);
+    const activeBranchKeys = new Set(activeBranches.map(b => b.key));
+    const selectableBranches =
+        currentUser.role === 'admin'
+            ? activeBranches
+            : activeBranches.filter(b => currentUser.allowedBranches?.includes(b.key) && activeBranchKeys.has(b.key));
+    const hasMultipleBranches = selectableBranches.length > 1;
 
     return (
         <>
@@ -102,8 +108,8 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar, setViewMode }) => {
                                 onChange={(e) => switchActiveBranch(e.target.value as Branch)}
                                 className="bg-transparent border-none text-xs sm:text-sm text-gray-700 dark:text-gray-200 focus:ring-0 cursor-pointer outline-none w-auto max-w-[80px] sm:max-w-max p-0"
                             >
-                                {currentUser.allowedBranches?.map(b => (
-                                    <option key={b} value={b} className="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100">{branchLabels[b]}</option>
+                                {selectableBranches.map(b => (
+                                    <option key={b.key} value={b.key} className="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100">{branchLabels[b.key] || b.label}</option>
                                 ))}
                             </select>
                         </div>

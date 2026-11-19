@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect, FormEvent } from 'react';
 import { GoogleGenAI } from "@google/genai";
 import { AppData } from '../../types';
+import { getActiveBranches, getProductTotalStock } from '../../lib/appConfig';
 
 interface AdminAIChatbotProps {
     appData: AppData;
@@ -28,7 +29,7 @@ const AdminAIChatbot: React.FC<AdminAIChatbotProps> = ({ appData }) => {
                 mainCategory: p.mainCategory,
                 brand: p.brand,
                 sellingPrice: p.sellingPrice,
-                totalStock: p.stock.main + p.stock.branch1 + p.stock.branch2 + p.stock.branch3,
+                totalStock: getProductTotalStock(p, getActiveBranches(appData?.appCustomization)),
             })),
             dailySalesSummary: {
                 totalSalesToday: (appData.dailySales || [])
