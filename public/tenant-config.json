@@ -7,6 +7,7 @@
   "logoUrl": "https://i.ibb.co/3yL3ZXm5/aa2f6315c6fc.jpg",
   "phone": "01013373634",
   "whatsapp": "01013373634",
+  "email": "info@autohouse-eg.com",
   "address": "القاهرة - التوفيقية",
   "adminEmail": "owner@auto-house.t2.app",
   "primaryColor": "#0284c7",
@@ -50,7 +51,45 @@
       ],
       "showPriceFilter": false,
       "showInStockOnlyFilter": false
-    }
+    },
+    "shipping": {
+      "defaultFee": 50,
+      "freeShippingThreshold": 3000,
+      "zones": [
+        { "name": "القاهرة والجيزة", "fee": 50 },
+        { "name": "الإسكندرية والدلتا", "fee": 65 },
+        { "name": "الصعيد ومدن القناة", "fee": 85 }
+      ]
+    },
+    "heroSlides": [
+      {
+        "id": 1,
+        "badge": "الخيار الأول لقطع الغيار في مصر",
+        "title": "قطع غيار أصلية",
+        "subtitle": "جودة أصلية، أداء مضمون",
+        "description": "نوفر لك تشكيلة واسعة من قطع غيار السيارات الأصلية بأسعار تنافسية وتوصيل سريع.",
+        "image": "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?q=80&w=2072&auto=format&fit=crop",
+        "category": "قطع غيار"
+      },
+      {
+        "id": 2,
+        "badge": "أحدث الكماليات والإكسسوارات",
+        "title": "كماليات وإكسسوارات",
+        "subtitle": "أضف لمسة مميزة لسيارتك",
+        "description": "أحدث الإكسسوارات الداخلية والخارجية لجميع أنواع السيارات لتناسب ذوقك.",
+        "image": "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?q=80&w=2069&auto=format&fit=crop",
+        "category": "كماليات و إكسسوارات"
+      },
+      {
+        "id": 3,
+        "badge": "حماية وأداء المحرك",
+        "title": "زيوت وبطاريات",
+        "subtitle": "أفضل أداء لمحركك",
+        "description": "زيوت محركات عالمية وبطاريات بعمر افتراضي طويل لضمان كفاءة سيارتك.",
+        "image": "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?q=80&w=1974&auto=format&fit=crop",
+        "category": "زيوت وشحومات"
+      }
+    ]
   },
   "productsCatalog": [
     {
